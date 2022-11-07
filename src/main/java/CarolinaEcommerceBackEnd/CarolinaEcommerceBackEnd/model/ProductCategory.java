@@ -4,16 +4,17 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table
+@Table(name="ProductCategory")
 public class ProductCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private long id;
-
+    @Column(name="categoryName")
     private String categoryName;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
+    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "productCategory")
     private Set<Product> product;
 
 

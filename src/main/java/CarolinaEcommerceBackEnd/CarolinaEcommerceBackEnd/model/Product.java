@@ -3,21 +3,25 @@ package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model;
 import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name="product")
 public class Product {
+
+
+    //UPDATE APPLICATION PROPERTIES TO USE @COLUM
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id")
     private Long id;
-
+    @Column(name="productName")
     private  String productName;
-
+    @Column(name="description")
     private String description;
 
     @ManyToOne
     @JoinColumn(name="category_id")
     private ProductCategory productCategory;
-
+    @Column(name="imageUrl")
     private String imageUrl;
 
 
