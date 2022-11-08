@@ -14,7 +14,7 @@ public class ProductCategory {
     @Column(name="categoryName")
     private String categoryName;
 
-    @OneToMany(cascade = CascadeType.MERGE, mappedBy = "productCategory")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
     private Set<Product> product;
 
 

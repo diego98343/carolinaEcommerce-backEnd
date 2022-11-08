@@ -1,4 +1,4 @@
-package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.productServiceF;
+package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.productServiceFile;
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.ProductRepository;
@@ -15,6 +15,7 @@ public class ProductServiceML implements ProductService {
 
     @Override
     public List<Product>findAll(){
+
         return productRepository.findAll();
     }
 
@@ -24,6 +25,21 @@ public class ProductServiceML implements ProductService {
          return product;
     }
 
+
+    @Override
+    public Product findById(Long id){
+        if(productRepository.findById(id).isPresent()){
+            return productRepository.findById(id).get();
+        }
+        return null;
+    }
+
+
+    @Override
+    public void delete (Long id){
+        Product expense= findById(id);
+        productRepository.delete(expense);
+    }
 
 
 }
