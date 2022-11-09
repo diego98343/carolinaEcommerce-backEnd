@@ -1,5 +1,7 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -35,20 +37,9 @@ public class Product {
     public Product() {
     }
 
+    @JsonBackReference
     public ProductCategory getProductCategory() {
         return productCategory;
-    }
-
-    public void setProductCategory(ProductCategory productCategory) {
-        this.productCategory = productCategory;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
@@ -75,13 +66,15 @@ public class Product {
         this.description = description;
     }
 
-    public ProductCategory getCategory() {
-        return productCategory;
-    }
-
-    public void setCategory(ProductCategory productCategory) {
+    public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }

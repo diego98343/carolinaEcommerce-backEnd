@@ -1,5 +1,7 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -27,6 +29,11 @@ public class ProductCategory {
     public ProductCategory() {
     }
 
+    @JsonManagedReference
+    public Set<Product> getProduct() {
+        return product;
+    }
+
     public long getId() {
         return id;
     }
@@ -43,9 +50,6 @@ public class ProductCategory {
         this.categoryName = categoryName;
     }
 
-    public Set<Product> getProduct() {
-        return product;
-    }
 
     public void setProduct(Set<Product> product) {
         this.product = product;

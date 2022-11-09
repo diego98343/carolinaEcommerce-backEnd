@@ -1,6 +1,7 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.controllers;
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
+import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.ProductCategory;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.productServiceFile.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,9 +29,10 @@ public class ProductController {
 
     @PostMapping("/products")
     public ResponseEntity<Product>save(@RequestBody Product product){
-        Product product1 = productService.save(product);
-        return new  ResponseEntity<Product>(product1,HttpStatus.OK);
 
+        Product product1 = productService.save(product);
+
+        return new  ResponseEntity<Product>(product1,HttpStatus.OK);
     }
 
 
