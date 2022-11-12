@@ -1,7 +1,6 @@
-package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.productCategoryServiceFile;
+package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.productCategoryServiceFile;
 
 
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.ProductCategory;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.ProductCategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +29,7 @@ public class ProductCategoryServiceML implements ProductCategoryService {
 
 
     @Override
-    public ProductCategory findById(Long id){
+    public ProductCategory findById(int id){
         if(productCategoryRepository.findById(id).isPresent()){
             return productCategoryRepository.findById(id).get();
         }
@@ -38,7 +37,7 @@ public class ProductCategoryServiceML implements ProductCategoryService {
     }
 
     @Override
-    public void delete (Long id){
+    public void delete (int id){
         ProductCategory expense= findById(id);
         productCategoryRepository.delete(expense);
     }

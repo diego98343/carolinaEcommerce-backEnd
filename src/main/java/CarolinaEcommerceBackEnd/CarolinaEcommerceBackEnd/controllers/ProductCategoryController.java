@@ -1,8 +1,7 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.controllers;
 
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.ProductCategory;
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.productCategoryServiceFile.ProductCategoryService;
+import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.productCategoryServiceFile.ProductCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,14 +30,14 @@ public class ProductCategoryController {
     }
 
     @GetMapping("/productCategories/{id}")
-    public ResponseEntity<ProductCategory> get(@PathVariable("id")Long id){
+    public ResponseEntity<ProductCategory> get(@PathVariable("id")int id){
         ProductCategory expense= productCategoryService.findById(id);
         return new ResponseEntity<ProductCategory>(expense,HttpStatus.OK);
     }
 
 
     @DeleteMapping("/productCategories/{id}")
-    public ResponseEntity<String> delete(@PathVariable("id")Long id){
+    public ResponseEntity<String> delete(@PathVariable("id")int id){
         productCategoryService.delete(id);
         return new ResponseEntity<String>("Expense is deleted",HttpStatus.OK);
     }

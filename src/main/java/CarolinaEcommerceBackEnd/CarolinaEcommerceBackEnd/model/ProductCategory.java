@@ -12,7 +12,7 @@ public class ProductCategory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
-    private long id;
+    private int id;
     @Column(name="categoryName")
     private String categoryName;
 
@@ -20,7 +20,7 @@ public class ProductCategory {
     private Set<Product> product;
 
 
-    public ProductCategory(long id, String categoryName, Set<Product> product) {
+    public ProductCategory(int id, String categoryName, Set<Product> product) {
         this.id = id;
         this.categoryName = categoryName;
         this.product = product;
@@ -29,16 +29,21 @@ public class ProductCategory {
     public ProductCategory() {
     }
 
+    public void saveProduct(Product product){
+        getProduct().add(product);
+    }
+
     @JsonManagedReference
     public Set<Product> getProduct() {
         return product;
     }
 
-    public long getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

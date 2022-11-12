@@ -1,4 +1,4 @@
-package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.productServiceFile;
+package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.productServiceFile;
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
 
@@ -9,9 +9,9 @@ public interface ProductService {
 
     Product save(Product product);
 
-    Product findById(Long id);
+    Product findById(int id);
 
-    void delete(Long id);
+    void delete(int id);
 }
 
 

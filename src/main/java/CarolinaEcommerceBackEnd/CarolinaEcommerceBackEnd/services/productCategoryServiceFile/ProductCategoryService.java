@@ -1,4 +1,4 @@
-package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.productCategoryServiceFile;
+package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.productCategoryServiceFile;
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.ProductCategory;
@@ -11,8 +11,8 @@ public interface ProductCategoryService {
     ProductCategory save(ProductCategory productCategory);
 
 
-    ProductCategory findById(Long id);
+    ProductCategory findById(int id);
 
 
-    void delete(Long id);
+    void delete(int id);
 }
