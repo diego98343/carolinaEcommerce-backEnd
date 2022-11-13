@@ -33,30 +33,14 @@ public class ProductController {
       return new ResponseEntity<List<Product>>(product, HttpStatus.OK);
     }
 
-    @PostMapping(value = {"/products"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Product>save(
-
-            @RequestPart("product") Product product,
-            @RequestPart("imageFile")MediaType[]file
-
-             ){
+    @PostMapping( "/products")
+    public ResponseEntity<Product>save(@RequestBody Product product){
         Product product1 = productService.save(product);
         return new  ResponseEntity<Product>(product1,HttpStatus.CREATED);
     }
 
 
-   public void uploadImage(MultipartFile[] multipartFiles){
 
-    Set<Image> imageModels= new HashSet<>();
-
-      for (MultipartFile file: multipartFiles ) {
-       Image image = new Image(
-
-
-       );
-
-     }
-   }
 
     @GetMapping("/products/{id}")
     public ResponseEntity<Product> get(@PathVariable("id")int id){

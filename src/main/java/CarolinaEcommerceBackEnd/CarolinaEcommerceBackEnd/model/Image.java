@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 import lombok.Builder;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Builder
@@ -15,7 +16,7 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="image_id")
-    private int id;
+    private int imageId;
     @Column(name="image_name")
     private String name;
     @Column(name="image_type")
@@ -24,23 +25,26 @@ public class Image {
     @Column(length = 50000000)
     private byte[] pictureByte;
 
+    @OneToMany
+    private List<Product> products;
 
-    public Image(int id, String name, String type, byte[] pictureByte) {
-        this.id = id;
+    public Image(int imageId, String name, String type, byte[] pictureByte, List<Product> products) {
+        this.imageId = imageId;
         this.name = name;
         this.type = type;
         this.pictureByte = pictureByte;
+        this.products = products;
     }
 
     public Image() {
     }
 
-    public int getId() {
-        return id;
+    public int getImageId() {
+        return imageId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setImageId(int imageId) {
+        this.imageId = imageId;
     }
 
     public String getName() {
@@ -65,5 +69,13 @@ public class Image {
 
     public void setPictureByte(byte[] pictureByte) {
         this.pictureByte = pictureByte;
+    }
+
+    public List<Product> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 }

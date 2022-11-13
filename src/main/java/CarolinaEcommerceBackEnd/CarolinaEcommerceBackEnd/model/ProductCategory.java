@@ -3,6 +3,7 @@ package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -11,17 +12,16 @@ public class ProductCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id")
-    private int id;
+    @Column(name="categoryId")
+    private int categoryId;
     @Column(name="categoryName")
     private String categoryName;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "productCategory")
-    private Set<Product> product;
+    private List<Product> product;
 
-
-    public ProductCategory(int id, String categoryName, Set<Product> product) {
-        this.id = id;
+    public ProductCategory(int categoryId, String categoryName, List<Product> product) {
+        this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.product = product;
     }
@@ -34,17 +34,17 @@ public class ProductCategory {
     }
 
     @JsonManagedReference
-    public Set<Product> getProduct() {
+    public List<Product> getProduct() {
         return product;
     }
 
 
-    public int getId() {
-        return id;
+    public int getCategoryId() {
+        return categoryId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 
     public String getCategoryName() {
@@ -55,8 +55,7 @@ public class ProductCategory {
         this.categoryName = categoryName;
     }
 
-
-    public void setProduct(Set<Product> product) {
+    public void setProduct(List<Product> product) {
         this.product = product;
     }
 }

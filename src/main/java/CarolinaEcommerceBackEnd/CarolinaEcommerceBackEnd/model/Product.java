@@ -3,6 +3,7 @@ package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,8 +14,8 @@ public class Product {
     //UPDATE APPLICATION PROPERTIES TO USE @COLUM
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="product_id")
-    private int id;
+    @Column(name="productId")
+    private int productId;
     @Column(name="productName")
     private  String productName;
     @Column(name="description")
@@ -23,28 +24,18 @@ public class Product {
     @ManyToOne
     @JoinColumn(name="category_id")
     private ProductCategory productCategory;
-    @Column(name="imageUrl")
-    private String imageUrl;
-
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(
-         name="product_images",
-         joinColumns = {
-                 @JoinColumn(name="product_id")
-         },
-            inverseJoinColumns = {
-                 @JoinColumn(name="image_id")
-            }
-    )
-    private Set<Image>  image;
 
 
-    public Product(int id, String productName, String description, ProductCategory productCategory, String imageUrl, Set<Image> image) {
-        this.id = id;
+    @ManyToOne
+    @JoinColumn(name="image_id")
+    private Image image;
+
+
+    public Product(int productId, String productName, String description, ProductCategory productCategory, Image image) {
+        this.productId = productId;
         this.productName = productName;
         this.description = description;
         this.productCategory = productCategory;
-        this.imageUrl = imageUrl;
         this.image = image;
     }
 
@@ -56,20 +47,13 @@ public class Product {
         return productCategory;
     }
 
-    public Set<Image> getImage() {
-        return image;
+
+    public int getProductId() {
+        return productId;
     }
 
-    public void setImage(Set<Image> image) {
-        this.image = image;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
@@ -92,11 +76,12 @@ public class Product {
         this.productCategory = productCategory;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+
+    public Image getImage() {
+        return image;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImage(Image image) {
+        this.image = image;
     }
 }
