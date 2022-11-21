@@ -2,13 +2,16 @@ package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.fileRepositor
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Attachment;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.AttachmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Service
 public class AttachmentServiceImpl implements AttachmentService {
-
+    @Autowired
     private AttachmentRepository attachmentRepository;
 
     public AttachmentServiceImpl(AttachmentRepository attachmentRepository) {
@@ -35,6 +38,7 @@ public class AttachmentServiceImpl implements AttachmentService {
         }
     }
 
+
     @Override
     public Attachment getAttachment(String fileId) throws Exception {
         return attachmentRepository
@@ -42,6 +46,23 @@ public class AttachmentServiceImpl implements AttachmentService {
                 .orElseThrow(
                         () -> new Exception("File not found with Id: " + fileId));
     }
+
+
+    @Override
+    public List<Attachment> findAll(){
+        return attachmentRepository.findAll();
+    }
+
+
+    @Override
+    public Attachment findFileById(String fileId){
+        if(attachmentRepository.findById(fileId).isPresent()){
+            return attachmentRepository.findById(fileId).get();
+        }
+        return null;
+    }
+
+
 
 
 

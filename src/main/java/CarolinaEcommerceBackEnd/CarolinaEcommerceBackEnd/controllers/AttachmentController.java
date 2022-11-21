@@ -3,17 +3,22 @@ package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.controllers;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Attachment;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.ResponseData;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.fileRepositoryFolder.AttachmentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.util.List;
+
 @RestController
 public class AttachmentController {
+    @Autowired
     private AttachmentService attachmentService;
 
     public AttachmentController(AttachmentService attachmentService) {
@@ -46,6 +51,23 @@ public class AttachmentController {
                         "attachment; filename=\"" + attachment.getFileName()
                                 + "\"")
                 .body(new ByteArrayResource(attachment.getData()));
+    }
+
+
+    @GetMapping("/files")
+    public ResponseEntity<List<Attachment>> getAllFiles(){
+        List<Attachment> allFiles= attachmentService.findAll();
+        return new ResponseEntity<List<Attachment>>(allFiles, HttpStatus.OK);
+    }
+
+
+
+    @GetMapping("/files/{id}")
+    public ResponseEntity<Attachment> getFileById(@PathVariable("id") String fileId){
+        Attachment file= attachmentService.findFileById(fileId);
+
+        return new ResponseEntity<Attachment>(file,HttpStatus.OK);
+
     }
 
 

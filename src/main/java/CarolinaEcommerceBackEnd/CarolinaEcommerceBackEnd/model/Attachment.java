@@ -4,10 +4,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data@NoArgsConstructor
@@ -19,6 +17,9 @@ public class Attachment {
 
     private String fileName;
     private String fileType;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "attachmentFile")
+    private List<Product> product;
 
     @Lob
     private byte[] data;
