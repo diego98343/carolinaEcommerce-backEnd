@@ -1,19 +1,14 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.controllers;
 
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Image;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.productServiceFile.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 //
 //@CrossOrigin("*")
@@ -38,8 +33,6 @@ public class ProductController {
         Product product1 = productService.save(product);
         return new  ResponseEntity<Product>(product1,HttpStatus.CREATED);
     }
-
-
 
 
     @GetMapping("/products/{id}")

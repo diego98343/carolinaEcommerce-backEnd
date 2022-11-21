@@ -26,17 +26,15 @@ public class Product {
     private ProductCategory productCategory;
 
 
-    @ManyToOne
-    @JoinColumn(name="image_id")
-    private Image image;
 
 
-    public Product(int productId, String productName, String description, ProductCategory productCategory, Image image) {
+
+    public Product(int productId, String productName, String description, ProductCategory productCategory) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
         this.productCategory = productCategory;
-        this.image = image;
+
     }
 
     public Product() {
@@ -77,11 +75,7 @@ public class Product {
     }
 
 
-    public Image getImage() {
-        return image;
-    }
 
-    public void setImage(Image image) {
-        this.image = image;
-    }
+
+
 }
