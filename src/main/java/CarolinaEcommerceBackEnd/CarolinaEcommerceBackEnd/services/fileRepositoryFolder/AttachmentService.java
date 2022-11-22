@@ -14,4 +14,7 @@ public interface AttachmentService {
 
     Attachment findFileById(String fileId);
 
+    void deleteFile(String fileId);
+
+
 }

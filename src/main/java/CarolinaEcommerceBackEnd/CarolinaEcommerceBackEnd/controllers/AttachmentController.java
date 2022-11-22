@@ -63,12 +63,22 @@ public class AttachmentController {
 
 
     @GetMapping("/files/{id}")
-    public ResponseEntity<Attachment> getFileById(@PathVariable("id") String fileId){
-        Attachment file= attachmentService.findFileById(fileId);
+    public ResponseEntity<Attachment> getFileById(@PathVariable("id") String id){
+        Attachment file= attachmentService.findFileById(id);
 
         return new ResponseEntity<Attachment>(file,HttpStatus.OK);
 
     }
+
+
+    @DeleteMapping("/files/{id}")
+    public ResponseEntity<String> deleteByid(@PathVariable("id")String id){
+        attachmentService.deleteFile(id);
+       return new  ResponseEntity<String>("file deleted",HttpStatus.OK);
+    }
+
+
+
 
 
 

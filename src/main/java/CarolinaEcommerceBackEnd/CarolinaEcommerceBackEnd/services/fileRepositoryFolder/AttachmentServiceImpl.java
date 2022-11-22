@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 @Service
@@ -60,6 +61,12 @@ public class AttachmentServiceImpl implements AttachmentService {
             return attachmentRepository.findById(fileId).get();
         }
         return null;
+    }
+
+    @Override
+    public void deleteFile(String fileId){
+        Attachment file = findFileById(fileId);
+        attachmentRepository.delete(file);
     }
 
 

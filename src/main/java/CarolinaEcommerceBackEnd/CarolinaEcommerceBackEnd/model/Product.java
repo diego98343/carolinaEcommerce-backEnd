@@ -48,7 +48,7 @@ public class Product {
         return productCategory;
     }
 
-
+    @JsonBackReference
     public Attachment getAttachmentFile() {
         return attachmentFile;
     }
