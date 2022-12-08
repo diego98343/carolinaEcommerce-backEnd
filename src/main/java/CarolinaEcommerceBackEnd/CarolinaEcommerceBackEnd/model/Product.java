@@ -43,12 +43,12 @@ public class Product {
 
 
 
-//    @JsonBackReference
+    @JsonBackReference
     public ProductCategory getProductCategory() {
         return productCategory;
     }
-
-//    @JsonBackReference
+//
+    @JsonBackReference
     public Attachment getAttachmentFile() {
         return attachmentFile;
     }
@@ -84,9 +84,6 @@ public class Product {
     public void setProductCategory(ProductCategory productCategory) {
         this.productCategory = productCategory;
     }
-
-
-
 
 
 }

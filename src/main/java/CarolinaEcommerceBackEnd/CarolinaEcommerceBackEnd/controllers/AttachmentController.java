@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 public class AttachmentController {
     @Autowired
-    private AttachmentService attachmentService;
+    private final AttachmentService attachmentService;
 
     public AttachmentController(AttachmentService attachmentService) {
         this.attachmentService = attachmentService;

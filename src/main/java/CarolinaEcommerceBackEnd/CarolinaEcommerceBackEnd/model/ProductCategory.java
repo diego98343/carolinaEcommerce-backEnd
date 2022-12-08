@@ -33,7 +33,7 @@ public class ProductCategory {
         getProduct().add(product);
     }
 
-//    @JsonManagedReference
+    @JsonManagedReference
     public List<Product> getProduct() {
         return product;
     }
