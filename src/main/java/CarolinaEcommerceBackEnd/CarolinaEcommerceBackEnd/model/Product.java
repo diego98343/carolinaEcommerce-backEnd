@@ -25,9 +25,9 @@ public class Product {
     @JoinColumn(name="category_id")
     private ProductCategory productCategory;
 
-//    @ManyToOne
-//    @JoinColumn(name="attachment_id")
-//    private Attachment attachmentFile;
+    @ManyToOne
+    @JoinColumn(name="attachment_id")
+    private Attachment attachmentFile;
 
 
     public Product(int productId, String productName, String description, ProductCategory productCategory, Attachment attachmentFile) {
@@ -35,7 +35,7 @@ public class Product {
         this.productName = productName;
         this.description = description;
         this.productCategory = productCategory;
-
+        this.attachmentFile = attachmentFile;
     }
 
     public Product() {
@@ -47,13 +47,15 @@ public class Product {
     public ProductCategory getProductCategory() {
         return productCategory;
     }
-//
-//    @JsonBackReference
-//    public Attachment getAttachmentFile() {
-//        return attachmentFile;
-//    }
+//MAKE SURE TO CALLED DIFFERENT VALUES FOR  JSONBACKREFERENCE WHEN THERE ARE MORE THAN TWO
+    @JsonBackReference(value = "image-a")
+    public Attachment getAttachmentFile() {
+        return attachmentFile;
+    }
 
-
+    public void setAttachmentFile(Attachment attachmentFile) {
+        this.attachmentFile = attachmentFile;
+    }
 
     public int getProductId() {
         return productId;
