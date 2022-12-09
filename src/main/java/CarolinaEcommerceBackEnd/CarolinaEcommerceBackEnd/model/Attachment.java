@@ -18,8 +18,7 @@ public class Attachment {
     private String fileName;
     private String fileType;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "attachmentFile")
-    private List<Product> product;
+
 
     @Lob
     private byte[] data;
@@ -34,11 +33,10 @@ public class Attachment {
     public Attachment() {
     }
 
-    public Attachment(String id, String fileName, String fileType, List<Product> product, byte[] data) {
+    public Attachment(String id, String fileName, String fileType, byte[] data) {
         this.id = id;
         this.fileName = fileName;
         this.fileType = fileType;
-        this.product = product;
         this.data = data;
     }
 
@@ -65,14 +63,12 @@ public class Attachment {
     public void setFileType(String fileType) {
         this.fileType = fileType;
     }
-    @JsonManagedReference
-    public List<Product> getProduct() {
-        return product;
-    }
+//    @JsonManagedReference
+//    public List<Product> getProduct() {
+//        return product;
+//    }
 
-    public void setProduct(List<Product> product) {
-        this.product = product;
-    }
+
 
     public byte[] getData() {
         return data;

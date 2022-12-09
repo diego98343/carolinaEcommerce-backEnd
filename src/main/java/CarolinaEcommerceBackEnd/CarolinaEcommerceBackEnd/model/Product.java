@@ -25,9 +25,9 @@ public class Product {
     @JoinColumn(name="category_id")
     private ProductCategory productCategory;
 
-    @ManyToOne
-    @JoinColumn(name="attachment_id")
-    private Attachment attachmentFile;
+//    @ManyToOne
+//    @JoinColumn(name="attachment_id")
+//    private Attachment attachmentFile;
 
 
     public Product(int productId, String productName, String description, ProductCategory productCategory, Attachment attachmentFile) {
@@ -35,7 +35,7 @@ public class Product {
         this.productName = productName;
         this.description = description;
         this.productCategory = productCategory;
-        this.attachmentFile = attachmentFile;
+
     }
 
     public Product() {
@@ -48,14 +48,12 @@ public class Product {
         return productCategory;
     }
 //
-    @JsonBackReference
-    public Attachment getAttachmentFile() {
-        return attachmentFile;
-    }
+//    @JsonBackReference
+//    public Attachment getAttachmentFile() {
+//        return attachmentFile;
+//    }
 
-    public void setAttachmentFile(Attachment attachmentFile) {
-        this.attachmentFile = attachmentFile;
-    }
+
 
     public int getProductId() {
         return productId;

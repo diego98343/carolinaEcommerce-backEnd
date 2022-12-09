@@ -17,6 +17,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.util.List;
 @CrossOrigin("*")
 @RestController
+@RequestMapping("/api")
 public class AttachmentController {
     @Autowired
     private final AttachmentService attachmentService;
