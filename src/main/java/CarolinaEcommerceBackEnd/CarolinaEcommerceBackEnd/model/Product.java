@@ -21,6 +21,8 @@ public class Product {
     @Column(name="description")
     private String description;
 
+    @Column(name="imageUrl")
+    private String imageUrl;
     @ManyToOne
     @JoinColumn(name="category_id")
     private ProductCategory productCategory;
@@ -55,6 +57,14 @@ public class Product {
 
     public void setAttachmentFile(Attachment attachmentFile) {
         this.attachmentFile = attachmentFile;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public int getProductId() {
