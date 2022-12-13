@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class AttachmentServiceImpl implements AttachmentService {
@@ -21,7 +22,7 @@ public class AttachmentServiceImpl implements AttachmentService {
 
     @Override
     public Attachment saveAttachment(MultipartFile file) throws Exception {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
         try {
             if(fileName.contains("..")) {
                 throw  new Exception("Filename contains invalid path sequence "

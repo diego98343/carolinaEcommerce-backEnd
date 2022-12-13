@@ -28,9 +28,13 @@ public class AttachmentController {
 
     @PostMapping("/upload")
     public ResponseData uploadFile(@RequestParam("file") MultipartFile file) throws Exception {
+
         Attachment attachment = null;
+
         String downloadURl = "";
+
         attachment = attachmentService.saveAttachment(file);
+
         downloadURl = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/download/")
                 .path(attachment.getId())

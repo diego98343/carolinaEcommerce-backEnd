@@ -17,14 +17,13 @@ public class Product {
     //UPDATE APPLICATION PROPERTIES TO USE @COLUM
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="productId")
+    @Column(name="product_Id")
     private int productId;
     @Column(name="productName")
     private  String productName;
     @Column(name="description")
     private String description;
-    @Column(name="imageUrl")
-    private String imageUrl;
+
 
     @Column(name="productPrice")
     private int productPrice;
@@ -46,24 +45,36 @@ public class Product {
     @Column(name = "units_in_stock")
     private int unitsInStock;
 
-    @ManyToOne
-    @JoinColumn(name="attachment_id")
-    private Attachment attachmentFile;
+//    @ManyToOne
+//    @JoinColumn(name="attachment_id")
+//    private Attachment attachmentFile;
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name="product_image",
+           joinColumns = {
+            @JoinColumn(name="product_id")
+           },
+            inverseJoinColumns = {
+            @JoinColumn(name="image_id")
+            }
+    )
+    private Set<Attachment> productImage;
 
 
-    public Product(int productId, String productName, String description, String imageUrl, int productPrice, ProductCategory productCategory, Date dateCreated, boolean active, Date lastUpdated, int unitsInStock, Attachment attachmentFile) {
+    public Product(int productId, String productName, String description, int productPrice, ProductCategory productCategory, Date dateCreated, boolean active, Date lastUpdated, int unitsInStock, Attachment attachmentFile, Set<Attachment> productImage) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
-        this.imageUrl = imageUrl;
         this.productPrice = productPrice;
         this.productCategory = productCategory;
         this.dateCreated = dateCreated;
         this.active = active;
         this.lastUpdated = lastUpdated;
         this.unitsInStock = unitsInStock;
-        this.attachmentFile = attachmentFile;
+        this.productImage = productImage;
     }
+
+
 
     public Product() {
     }
@@ -74,9 +85,24 @@ public class Product {
         return productCategory;
     }
 //MAKE SURE TO CALLED DIFFERENT VALUES FOR  JSONBACKREFERENCE WHEN THERE ARE MORE THAN TWO
-    @JsonBackReference(value = "image-a")
-    public Attachment getAttachmentFile() {
-        return attachmentFile;
+//    @JsonBackReference(value = "image-a")
+//    public Attachment getAttachmentFile() {
+//        return attachmentFile;
+//    }
+//
+//
+//    public Set<Attachment> getProductImage() {
+//        return productImage;
+//    }
+
+
+    public Set<Attachment> getProductImage() {
+        return productImage;
+    }
+
+
+    public void setProductImage(Set<Attachment> productImage) {
+        this.productImage = productImage;
     }
 
     public int getProductPrice() {
@@ -87,18 +113,9 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    public void setAttachmentFile(Attachment attachmentFile) {
-        this.attachmentFile = attachmentFile;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
+//    public void setAttachmentFile(Attachment attachmentFile) {
+//        this.attachmentFile = attachmentFile;
+//    }
 
     public int getProductId() {
         return productId;
