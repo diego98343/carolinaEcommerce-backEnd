@@ -3,6 +3,7 @@ package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.controllers;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Attachment;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Product;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.ProductCategory;
+import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.productCategoryServiceFile.ProductCategoryService;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.productServiceFile.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,10 @@ public class ProductController {
     ProductService productService;
 
 
+    @Autowired
+    public ProductCategoryService productCategoryService;
+
+
     @GetMapping("/products")
     public ResponseEntity<List<Product>> get() {
       List<Product> product= productService.findAll();
@@ -42,16 +47,23 @@ public class ProductController {
     }
 
 
-    //---------------------------------------------------------------------------------------------------------
+    //----------------------------------------------POST_REQUEST_MULTIPLE-----------------------------------------------------------
 
     @PostMapping(value = {"/addNewProduct"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public Product addNewProduct(@RequestPart("product") Product product,
-                                 @RequestPart("imageFile")MultipartFile[] file)
+                                 @RequestPart("imageFile")MultipartFile[] file,
+                                 @RequestPart("productCategory") int productId)
                                 {
+
 
         try{
             Set<Attachment> images = uploadImage(file);
             product.setProductImage(images);
+
+            ProductCategory productCategory= productCategoryService.findById(productId);
+            product.setProductCategory(productCategory);
+
+            product.setProductCategory(productCategory);
             return  productService.save(product);
 
         }catch(Exception e){

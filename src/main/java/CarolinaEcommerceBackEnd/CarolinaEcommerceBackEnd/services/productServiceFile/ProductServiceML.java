@@ -15,7 +15,6 @@ public class ProductServiceML implements ProductService {
 
     @Override
     public List<Product>findAll(){
-
         return productRepository.findAll();
     }
 
