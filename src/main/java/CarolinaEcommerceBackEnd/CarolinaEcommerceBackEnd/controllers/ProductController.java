@@ -51,19 +51,13 @@ public class ProductController {
 
     @PostMapping(value = {"/addNewProduct"}, consumes = {MediaType.MULTIPART_FORM_DATA_VALUE})
     public Product addNewProduct(@RequestPart("product") Product product,
-                                 @RequestPart("imageFile")MultipartFile[] file,
-                                 @RequestPart("productCategory") int productId)
+                                 @RequestPart("imageFile")MultipartFile[] file)
                                 {
-
 
         try{
             Set<Attachment> images = uploadImage(file);
-            product.setProductImage(images);
+            product.setProductImage(images);;
 
-            ProductCategory productCategory= productCategoryService.findById(productId);
-            product.setProductCategory(productCategory);
-
-            product.setProductCategory(productCategory);
             return  productService.save(product);
 
         }catch(Exception e){
@@ -72,6 +66,8 @@ public class ProductController {
 
           return null;
     }
+
+
 
     public Set<Attachment> uploadImage(MultipartFile[] multipartFiles) throws IOException {
 

@@ -45,9 +45,6 @@ public class Product {
     @Column(name = "units_in_stock")
     private int unitsInStock;
 
-//    @ManyToOne
-//    @JoinColumn(name="attachment_id")
-//    private Attachment attachmentFile;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name="product_image",
@@ -84,16 +81,6 @@ public class Product {
     public ProductCategory getProductCategory() {
         return productCategory;
     }
-//MAKE SURE TO CALLED DIFFERENT VALUES FOR  JSONBACKREFERENCE WHEN THERE ARE MORE THAN TWO
-//    @JsonBackReference(value = "image-a")
-//    public Attachment getAttachmentFile() {
-//        return attachmentFile;
-//    }
-//
-//
-//    public Set<Attachment> getProductImage() {
-//        return productImage;
-//    }
 
 
     public Set<Attachment> getProductImage() {
@@ -113,9 +100,6 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-//    public void setAttachmentFile(Attachment attachmentFile) {
-//        this.attachmentFile = attachmentFile;
-//    }
 
     public int getProductId() {
         return productId;

@@ -13,9 +13,8 @@ public class Attachment {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
 
+    private String id;
     private String fileName;
     private String fileType;
 
@@ -54,9 +53,6 @@ public class Attachment {
         return fileName;
     }
 
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
 
     public String getFileType() {
         return fileType;
@@ -65,14 +61,7 @@ public class Attachment {
     public void setFileType(String fileType) {
         this.fileType = fileType;
     }
-//    @JsonManagedReference(value = "image-a")
-//    public List<Product> getProduct() {
-//        return product;
-//    }
-//
-//    public void setProduct(List<Product> product) {
-//        this.product = product;
-//    }
+
 
     public byte[] getData() {
         return data;
