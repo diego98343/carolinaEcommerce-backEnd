@@ -24,7 +24,6 @@ public class Product {
     @Column(name="description")
     private String description;
 
-
     @Column(name="productPrice")
     private int productPrice;
     @ManyToOne
