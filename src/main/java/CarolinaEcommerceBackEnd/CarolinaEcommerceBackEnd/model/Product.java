@@ -45,6 +45,19 @@ public class Product {
     private int unitsInStock;
 
 
+    @Column(name = "imageURL")
+    private String imageURl;
+
+
+    @Column(name = "displayProduct")
+    private Boolean displayProduct;
+
+
+    @Column(name = "productReference")
+    private String productReference;
+
+
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name="product_image",
            joinColumns = {
@@ -56,8 +69,7 @@ public class Product {
     )
     private Set<Attachment> productImage;
 
-
-    public Product(int productId, String productName, String description, int productPrice, ProductCategory productCategory, Date dateCreated, boolean active, Date lastUpdated, int unitsInStock, Attachment attachmentFile, Set<Attachment> productImage) {
+    public Product(int productId, String productName, String description, int productPrice, ProductCategory productCategory, Date dateCreated, boolean active, Date lastUpdated, int unitsInStock, String imageURl, Boolean displayProduct, String productReference, Set<Attachment> productImage) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
@@ -67,10 +79,11 @@ public class Product {
         this.active = active;
         this.lastUpdated = lastUpdated;
         this.unitsInStock = unitsInStock;
+        this.imageURl = imageURl;
+        this.displayProduct = displayProduct;
+        this.productReference = productReference;
         this.productImage = productImage;
     }
-
-
 
     public Product() {
     }
@@ -82,10 +95,33 @@ public class Product {
     }
 
 
+    public String getProductReference() {
+        return productReference;
+    }
+
+    public void setProductReference(String productReference) {
+        this.productReference = productReference;
+    }
+
+    public String getImageURl() {
+        return imageURl;
+    }
+
+    public void setImageURl(String imageURl) {
+        this.imageURl = imageURl;
+    }
+
     public Set<Attachment> getProductImage() {
         return productImage;
     }
 
+    public Boolean getDisplayProduct() {
+        return displayProduct;
+    }
+
+    public void setDisplayProduct(Boolean displayProduct) {
+        this.displayProduct = displayProduct;
+    }
 
     public void setProductImage(Set<Attachment> productImage) {
         this.productImage = productImage;
