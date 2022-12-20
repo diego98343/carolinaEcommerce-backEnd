@@ -1,6 +1,7 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.sun.istack.NotNull;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -19,6 +20,7 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_Id")
     private int productId;
+    @NotNull
     @Column(name="productName")
     private  String productName;
     @Column(name="description")
