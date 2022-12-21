@@ -37,7 +37,8 @@ public class UserServiceML implements UserService {
 
     @Override
     public void delete(int id) {
-
+      User user = findRegistrationById(id);
+      registrationRepository.delete(user);
     }
 
 
