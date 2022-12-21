@@ -1,10 +1,10 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository;
 
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Registration;
+import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface RegistrationRepository extends JpaRepository<Registration,Integer> {
+public interface UserRepository extends JpaRepository<User,Integer> {
 }

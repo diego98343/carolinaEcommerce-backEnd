@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table( name="user_registration_form")
-public class Registration {
+public class User {
 
 
     @Id
@@ -25,7 +25,7 @@ public class Registration {
     private Date dateOfBirth;
 
 
-    public Registration(int id, String name, int phoneNumber, String homeAddress, String passWord, String email, Date dateOfBirth) {
+    public User(int id, String name, int phoneNumber, String homeAddress, String passWord, String email, Date dateOfBirth) {
         this.id = id;
         this.name = name;
         this.phoneNumber = phoneNumber;
@@ -35,7 +35,7 @@ public class Registration {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public Registration() {
+    public User() {
     }
 
     public int getId() {

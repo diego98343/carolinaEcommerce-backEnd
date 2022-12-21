@@ -1,33 +1,38 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.RegistrationRespoFile;
 
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Registration;
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.RegistrationRepository;
+import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.User;
+import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class RegistrationServieML implements RegistrationService{
+public class UserServiceML implements UserService {
     
     
     @Autowired
-    RegistrationRepository registrationRepository;
+    UserRepository registrationRepository;
     
     @Override
-    public List<Registration> findAll(){
+    public List<User> findAll(){
         return registrationRepository.findAll();
     }
 
     @Override
-    public Registration saveRegistration(Registration registration) {
+    public User saveRegistration(User registration) {
         registrationRepository.save(registration);
         return registration;
     }
 
     @Override
-    public Registration findRegistrationById(int id) {
-        registrationRepository.findById(id);
+    public User findRegistrationById(int id) {
+
+        if(registrationRepository.findById(id).isPresent()){
+            return registrationRepository.findById(id).get();
+        }
+
+        return null;
     }
 
     @Override
