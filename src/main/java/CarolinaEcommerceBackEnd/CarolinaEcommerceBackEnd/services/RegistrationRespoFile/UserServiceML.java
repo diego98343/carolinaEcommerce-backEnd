@@ -29,7 +29,8 @@ public class UserServiceML implements UserService {
     public User findRegistrationById(int id) {
 
         if(registrationRepository.findById(id).isPresent()){
-            return registrationRepository.findById(id).get();
+            User userRegistration = registrationRepository.findById(id).get();
+            return  userRegistration;
         }
 
         return null;
