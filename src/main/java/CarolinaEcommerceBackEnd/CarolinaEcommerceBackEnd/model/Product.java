@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -20,14 +21,18 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_Id")
     private int productId;
-    @NotNull
+    @javax.validation.constraints.NotNull
+    @Size(min = 5)
     @Column(name="productName")
     private  String productName;
+    @javax.validation.constraints.NotNull
+    @Size(min = 5)
     @Column(name="description")
     private String description;
-
+    @javax.validation.constraints.NotNull
     @Column(name="productPrice")
     private int productPrice;
+
     @ManyToOne
     @JoinColumn(name="category_id")
     private ProductCategory productCategory;
@@ -42,11 +47,11 @@ public class Product {
     @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
-
+    @javax.validation.constraints.NotNull
     @Column(name = "units_in_stock")
     private int unitsInStock;
-
-
+    @javax.validation.constraints.NotNull
+    @Size(min = 5)
     @Column(name = "imageURL")
     private String imageURl;
 
@@ -54,7 +59,8 @@ public class Product {
     @Column(name = "displayProduct")
     private Boolean displayProduct;
 
-
+    @javax.validation.constraints.NotNull
+    @Size(min = 5)
     @Column(name = "productReference")
     private String productReference;
 
