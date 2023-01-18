@@ -14,7 +14,7 @@ import java.util.Objects;
 @Service
 public class AttachmentServiceImpl implements AttachmentService {
     @Autowired
-    private AttachmentRepository attachmentRepository;
+    private final AttachmentRepository attachmentRepository;
 
     public AttachmentServiceImpl(AttachmentRepository attachmentRepository) {
         this.attachmentRepository = attachmentRepository;

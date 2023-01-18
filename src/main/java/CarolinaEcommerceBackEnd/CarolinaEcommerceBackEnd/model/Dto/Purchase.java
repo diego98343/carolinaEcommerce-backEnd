@@ -1,4 +1,4 @@
-package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model;
+package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.Dto;
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Address;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Customer;
@@ -9,7 +9,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class Purchese {
+public class Purchase {
 
     private Customer customer;
     private Address shippingAddress;

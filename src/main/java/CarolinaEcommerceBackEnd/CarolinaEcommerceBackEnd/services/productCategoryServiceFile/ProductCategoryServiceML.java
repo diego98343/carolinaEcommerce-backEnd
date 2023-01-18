@@ -16,7 +16,6 @@ public class ProductCategoryServiceML implements ProductCategoryService {
 
     @Override
     public List<ProductCategory> findAll(){
-
         return productCategoryRepository.findAll();
     }
 
