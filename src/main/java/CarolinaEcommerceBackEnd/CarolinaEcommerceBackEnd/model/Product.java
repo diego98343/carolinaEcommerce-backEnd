@@ -59,6 +59,9 @@ public class Product {
     @Column(name = "displayProduct")
     private Boolean displayProduct;
 
+
+    private String size;
+
     @javax.validation.constraints.NotNull
     @Size(min = 5)
     @Column(name = "productReference")
@@ -77,7 +80,7 @@ public class Product {
     )
     private Set<Attachment> productImage;
 
-    public Product(int productId, String productName, String description, int productPrice, ProductCategory productCategory, Date dateCreated, boolean active, Date lastUpdated, int unitsInStock, String imageURl, Boolean displayProduct, String productReference, Set<Attachment> productImage) {
+    public Product(int productId, String productName, String description, int productPrice, ProductCategory productCategory, Date dateCreated, boolean active, Date lastUpdated, int unitsInStock, String imageURl, Boolean displayProduct, String size, String productReference, Set<Attachment> productImage) {
         this.productId = productId;
         this.productName = productName;
         this.description = description;
@@ -89,6 +92,7 @@ public class Product {
         this.unitsInStock = unitsInStock;
         this.imageURl = imageURl;
         this.displayProduct = displayProduct;
+        this.size = size;
         this.productReference = productReference;
         this.productImage = productImage;
     }
@@ -102,6 +106,14 @@ public class Product {
         return productCategory;
     }
 
+
+    public String getSize() {
+        return size;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
 
     public String getProductReference() {
         return productReference;
