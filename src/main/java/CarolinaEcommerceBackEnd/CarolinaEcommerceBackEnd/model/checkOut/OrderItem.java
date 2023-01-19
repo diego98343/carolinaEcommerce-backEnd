@@ -16,8 +16,7 @@ public class OrderItem {
     private BigDecimal unitPrice;
 
     private int quantity;
-
-
+    
     private String size;
 
     private Long productId;
