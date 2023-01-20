@@ -6,6 +6,7 @@ import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Customer
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Order;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.OrderItem;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.CustomerRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,6 +15,7 @@ import java.util.UUID;
 
 @Service
 public class CheckOutServicelpml implements   CheckoutService {
+
 
     private final CustomerRepository customerRepository;
 
@@ -28,16 +30,12 @@ public class CheckOutServicelpml implements   CheckoutService {
 
         //retrieve the order info from dto
         Order order = purchase.getOrder();
-
         //generate tracking number
         String orderTrackingNumber = generateOrderTrackingNumber();
         order.setOrderTrackingNumber(orderTrackingNumber);
-
         //populate order with orderItems
         List<OrderItem> orderItems = purchase.getOrderItems();
-
         orderItems.forEach(item->order.add(item));
-
         //populate order with  billingAddress and shippingAddress
         order.setBillingAddress(purchase.getBillingAddress());
         order.setShippingAddress(purchase.getShippingAddress());
@@ -46,11 +44,12 @@ public class CheckOutServicelpml implements   CheckoutService {
         Customer customer = purchase.getCustomer();
         customer.add(order);
 
+        //save to the dataBase
+        customerRepository.save(customer);
 
 
 
-
-        return  null;
+        return  new PurchaseResponse(orderTrackingNumber);
     }
 
 
