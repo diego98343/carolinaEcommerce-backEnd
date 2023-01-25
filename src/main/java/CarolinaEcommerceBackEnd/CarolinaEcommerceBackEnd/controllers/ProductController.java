@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
@@ -42,9 +43,20 @@ public class ProductController {
     }
 
     @PostMapping("/products")
-    public ResponseEntity<Product>save(@Valid @RequestBody Product product){
+    public ResponseEntity<Product>save( @RequestBody Product product){
         Product product1 = productService.save(product);
         return new  ResponseEntity<Product>(product1,HttpStatus.CREATED);
+    }
+    @GetMapping("productsBaseOnCategory/{id}")
+    public List<Product> returnAllProductsUsingCategoryId(@PathVariable("id")int id){
+
+        List<Product> allProducts = productService.findAll();
+
+        for(Product product : allProducts){
+
+        }
+//
+       return null;
     }
 
 

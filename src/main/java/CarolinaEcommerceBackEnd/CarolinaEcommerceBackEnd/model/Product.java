@@ -21,15 +21,13 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="product_Id")
     private int productId;
-    @javax.validation.constraints.NotNull
-    @Size(min = 5)
+
     @Column(name="productName")
     private  String productName;
-    @javax.validation.constraints.NotNull
-    @Size(min = 5)
+
     @Column(name="description")
     private String description;
-    @javax.validation.constraints.NotNull
+
     @Column(name="productPrice")
     private int productPrice;
 
@@ -41,29 +39,20 @@ public class Product {
     @CreationTimestamp
     private Date dateCreated;
 
-    @Column(name = "active")
-    private boolean active;
 
     @Column(name = "last_updated")
     @UpdateTimestamp
     private Date lastUpdated;
-    @javax.validation.constraints.NotNull
+
     @Column(name = "units_in_stock")
     private int unitsInStock;
-    @javax.validation.constraints.NotNull
+
     @Size(min = 5)
     @Column(name = "imageURL")
     private String imageURl;
 
 
-    @Column(name = "displayProduct")
-    private Boolean displayProduct;
 
-
-    private String size;
-
-    @javax.validation.constraints.NotNull
-    @Size(min = 5)
     @Column(name = "productReference")
     private String productReference;
 
@@ -87,12 +76,12 @@ public class Product {
         this.productPrice = productPrice;
         this.productCategory = productCategory;
         this.dateCreated = dateCreated;
-        this.active = active;
+
         this.lastUpdated = lastUpdated;
         this.unitsInStock = unitsInStock;
         this.imageURl = imageURl;
-        this.displayProduct = displayProduct;
-        this.size = size;
+
+
         this.productReference = productReference;
         this.productImage = productImage;
     }
@@ -107,13 +96,9 @@ public class Product {
     }
 
 
-    public String getSize() {
-        return size;
-    }
 
-    public void setSize(String size) {
-        this.size = size;
-    }
+
+
 
     public String getProductReference() {
         return productReference;
@@ -133,14 +118,6 @@ public class Product {
 
     public Set<Attachment> getProductImage() {
         return productImage;
-    }
-
-    public Boolean getDisplayProduct() {
-        return displayProduct;
-    }
-
-    public void setDisplayProduct(Boolean displayProduct) {
-        this.displayProduct = displayProduct;
     }
 
     public void setProductImage(Set<Attachment> productImage) {
@@ -190,14 +167,6 @@ public class Product {
 
     public void setDateCreated(Date dateCreated) {
         this.dateCreated = dateCreated;
-    }
-
-    public boolean isActive() {
-        return active;
-    }
-
-    public void setActive(boolean active) {
-        this.active = active;
     }
 
     public Date getLastUpdated() {

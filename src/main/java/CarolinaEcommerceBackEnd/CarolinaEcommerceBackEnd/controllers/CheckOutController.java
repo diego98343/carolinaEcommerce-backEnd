@@ -23,11 +23,16 @@ public class CheckOutController {
     @PostMapping("/purchase")
     public PurchaseResponse placeOrder(@RequestBody Purchase purchase){
 
-      PurchaseResponse purchaseResponse;
-      purchaseResponse = checkoutService.placeOrder(purchase);
+      PurchaseResponse purchaseResponse = checkoutService.placeOrder(purchase);
 
         return  purchaseResponse;
   }
+
+//
+//   @GetMapping("/getPurchases")
+//    public
+//
+
 
 
 

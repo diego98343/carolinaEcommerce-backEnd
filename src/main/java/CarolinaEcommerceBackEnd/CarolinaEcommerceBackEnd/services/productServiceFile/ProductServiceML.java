@@ -13,6 +13,10 @@ public class ProductServiceML implements ProductService {
     @Autowired
     ProductRepository productRepository;
 
+    public ProductServiceML(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
     @Override
     public List<Product>findAll(){
         return productRepository.findAll();
@@ -21,18 +25,15 @@ public class ProductServiceML implements ProductService {
     @Override
     public Product save(Product product){
 
-
          productRepository.save(product);
          return product;
     }
-
 
     @Override
     public Product findById(int id){
         if(productRepository.findById(id).isPresent()){
             return productRepository.findById(id).get();
         }
-
         return null;
     }
 
@@ -42,6 +43,7 @@ public class ProductServiceML implements ProductService {
         Product expense= findById(id);
         productRepository.delete(expense);
     }
+
 
 
 }

@@ -8,7 +8,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
     private String street;
     private String city;
     private String country;
@@ -18,7 +18,7 @@ public class Address {
     private Order order;
 
 
-    public Address(long id, String street, String city, String country, String zipcode, Order order) {
+    public Address(int  id, String street, String city, String country, String zipcode, Order order) {
         this.id = id;
         this.street = street;
         this.city = city;
@@ -35,7 +35,7 @@ public class Address {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int  id) {
         this.id = id;
     }
 

@@ -19,7 +19,7 @@ public class CheckOutServicelpml implements   CheckoutService {
 
     private final CustomerRepository customerRepository;
 
-    //this constructor replace the AUTOWIRE
+    //this constructor replace the AUTOWIRED
     public CheckOutServicelpml(CustomerRepository customerRepository ){
         this.customerRepository = customerRepository;
     }
@@ -48,16 +48,19 @@ public class CheckOutServicelpml implements   CheckoutService {
         customerRepository.save(customer);
 
 
-
         return  new PurchaseResponse(orderTrackingNumber);
     }
-
-
 
 
     private String generateOrderTrackingNumber() {
 
         return UUID.randomUUID().toString();
+    }
+
+
+    @Override
+    public List<Customer>getPurchaseOrders(){
+        return customerRepository.findAll();
     }
 
 }

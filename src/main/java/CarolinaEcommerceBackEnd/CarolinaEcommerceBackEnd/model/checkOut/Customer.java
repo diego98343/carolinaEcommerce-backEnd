@@ -9,7 +9,7 @@ import java.util.List;
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int  id;
     private String name;
     private String email;
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
@@ -27,7 +27,7 @@ public class Customer {
         }
     }
 
-    public Customer(long id, String name, String email, List<Order> orders) {
+    public Customer(int  id, String name, String email, List<Order> orders) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -46,11 +46,12 @@ public class Customer {
         this.orders = orders;
     }
 
-    public long getId() {
+
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

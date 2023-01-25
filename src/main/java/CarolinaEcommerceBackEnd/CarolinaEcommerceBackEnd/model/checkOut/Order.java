@@ -1,5 +1,8 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -8,12 +11,12 @@ import java.util.HashSet;
 import java.util.List;
 
 @Entity
-@Table(name="order")
+@Table(name="orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int id;
 
     private String orderTrackingNumber;
 
@@ -22,9 +25,9 @@ public class Order {
     private BigDecimal totalPrice;
 
     private String status;
-
+    @CreationTimestamp
     private Date dateCreated;
-
+    @UpdateTimestamp
     private Date lastUpdated;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy ="order")
@@ -55,7 +58,7 @@ public class Order {
         }
     }
 
-    public Order(long id, String orderTrackingNumber, int totalQuantity, BigDecimal totalPrice, String status, Date dateCreated, Date lastUpdated, List<OrderItem> orderItems, Customer customer, Address shippingAddress, Address billingAddress) {
+    public Order(int  id, String orderTrackingNumber, int totalQuantity, BigDecimal totalPrice, String status, Date dateCreated, Date lastUpdated, List<OrderItem> orderItems, Customer customer, Address shippingAddress, Address billingAddress) {
         this.id = id;
         this.orderTrackingNumber = orderTrackingNumber;
         this.totalQuantity = totalQuantity;
@@ -98,11 +101,11 @@ public class Order {
     public Order() {
     }
 
-    public long getId() {
+    public int  getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

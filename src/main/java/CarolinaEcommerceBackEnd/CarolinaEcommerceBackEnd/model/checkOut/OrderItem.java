@@ -9,7 +9,7 @@ public class OrderItem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private int  id;
 
     private String imageUrl;
 
@@ -26,7 +26,7 @@ public class OrderItem {
     private Order order;
 
 
-    public OrderItem(long id, String imageUrl, BigDecimal unitPrice, int quantity, String size, Long productId, Order order) {
+    public OrderItem(int  id, String imageUrl, BigDecimal unitPrice, int quantity, String size, Long productId, Order order) {
         this.id = id;
         this.imageUrl = imageUrl;
         this.unitPrice = unitPrice;
@@ -48,11 +48,11 @@ public class OrderItem {
         this.size = size;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
