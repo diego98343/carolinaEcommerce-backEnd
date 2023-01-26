@@ -47,17 +47,16 @@ public class ProductController {
         Product product1 = productService.save(product);
         return new  ResponseEntity<Product>(product1,HttpStatus.CREATED);
     }
-    @GetMapping("productsBaseOnCategory/{id}")
-    public List<Product> returnAllProductsUsingCategoryId(@PathVariable("id")int id){
-
-        List<Product> allProducts = productService.findAll();
-
-        for(Product product : allProducts){
-
-        }
+//    @GetMapping("productsBaseOnCategory/{id}")
+//    public List<Product> returnAllProductsUsingCategoryId(@PathVariable("id")int id){
 //
-       return null;
-    }
+//        List<Product> allProducts = productService.findAll();
+//
+//        for(Product product : allProducts){
+//
+//        }
+//       return null;
+//    }
 
 
     //----------------------------------------------POST_REQUEST_MULTIPLE-----------------------------------------------------------
@@ -114,7 +113,22 @@ public class ProductController {
     }
 
 
+    @PutMapping("/productUpdate/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product product){
 
+        Product productInput  = productService.findById(id);
+
+        productInput.setProductName(product.getProductName());
+        productInput.setProductPrice(product.getProductPrice());
+        productInput.setDescription(product.getDescription());
+        productInput.setImageURl(product.getImageURl());
+        productInput.setUnitsInStock(product.getUnitsInStock());
+        productInput.setProductReference(product.getProductReference());
+        productInput.setProductCategory(product.getProductCategory());
+
+        Product updatedProduct = productService.save(product);
+        return ResponseEntity.ok( updatedProduct);
+    }
 
 
 
