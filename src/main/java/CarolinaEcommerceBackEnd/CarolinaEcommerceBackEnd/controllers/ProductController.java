@@ -113,20 +113,20 @@ public class ProductController {
     }
 
 
-    @PutMapping("/productUpdate/{id}")
-    public ResponseEntity<Product> updateProduct(@PathVariable int id, @RequestBody Product product){
+    @PutMapping("/products/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable("id")int id, @RequestBody Product product){
 
-        Product productInput  = productService.findById(id);
+        Product tempProduct  = productService.findById(id);
 
-        productInput.setProductName(product.getProductName());
-        productInput.setProductPrice(product.getProductPrice());
-        productInput.setDescription(product.getDescription());
-        productInput.setImageURl(product.getImageURl());
-        productInput.setUnitsInStock(product.getUnitsInStock());
-        productInput.setProductReference(product.getProductReference());
-        productInput.setProductCategory(product.getProductCategory());
+        tempProduct.setProductName(product.getProductName());
+        tempProduct.setProductPrice(product.getProductPrice());
+        tempProduct.setDescription(product.getDescription());
+        tempProduct.setImageURl(product.getImageURl());
+        tempProduct.setUnitsInStock(product.getUnitsInStock());
+        tempProduct.setProductReference(product.getProductReference());
+        tempProduct.setProductCategory(product.getProductCategory());
 
-        Product updatedProduct = productService.save(product);
+        Product updatedProduct = productService.save(tempProduct);
         return ResponseEntity.ok( updatedProduct);
     }
 
