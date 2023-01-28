@@ -4,6 +4,7 @@ import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Address;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Customer;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Order;
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.OrderItem;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import java.util.List;
@@ -61,7 +62,7 @@ public class Purchase {
     public void setOrder(Order order) {
         this.order = order;
     }
-
+    @JsonManagedReference
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }

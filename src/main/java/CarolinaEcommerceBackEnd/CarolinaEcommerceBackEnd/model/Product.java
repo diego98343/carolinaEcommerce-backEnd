@@ -97,9 +97,6 @@ public class Product {
 
 
 
-
-
-
     public String getProductReference() {
         return productReference;
     }
@@ -184,4 +181,4 @@ public class Product {
     public void setUnitsInStock(int unitsInStock) {
         this.unitsInStock = unitsInStock;
     }
-}
+ }

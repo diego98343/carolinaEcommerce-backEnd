@@ -1,5 +1,8 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -30,18 +33,23 @@ public class Order {
     @UpdateTimestamp
     private Date lastUpdated;
 
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy ="order")
+    @JsonIgnore
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @ManyToOne
+    @JsonIgnore
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "shipping_address_id",referencedColumnName = "id")
     private Address shippingAddress;
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "billing_address_id",referencedColumnName = "id")
     private Address billingAddress;
 
@@ -75,6 +83,13 @@ public class Order {
     public List<OrderItem> getOrderItems() {
         return orderItems;
     }
+
+
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
 
     public void setOrderItems(List<OrderItem> orderItems) {
         this.orderItems = orderItems;
@@ -157,9 +172,6 @@ public class Order {
         this.lastUpdated = lastUpdated;
     }
 
-    public Customer getCustomer() {
-        return customer;
-    }
 
     public void setCustomer(Customer customer) {
         this.customer = customer;

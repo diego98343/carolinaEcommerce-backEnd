@@ -1,5 +1,8 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
@@ -87,6 +90,7 @@ public class OrderItem {
     public void setProductId(Long productId) {
         this.productId = productId;
     }
+
 
     public Order getOrder() {
         return order;

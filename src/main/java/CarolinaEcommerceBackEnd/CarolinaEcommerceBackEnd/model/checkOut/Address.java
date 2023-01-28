@@ -1,5 +1,7 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Address {
     private String zipcode;
     @OneToOne
     @PrimaryKeyJoinColumn
+    @JsonIgnore
     private Order order;
 
 

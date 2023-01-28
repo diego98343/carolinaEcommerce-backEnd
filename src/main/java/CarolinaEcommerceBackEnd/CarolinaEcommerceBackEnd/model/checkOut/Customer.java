@@ -1,5 +1,9 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +16,7 @@ public class Customer {
     private int  id;
     private String name;
     private String email;
+    @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orders;
     public void add(Order order){
