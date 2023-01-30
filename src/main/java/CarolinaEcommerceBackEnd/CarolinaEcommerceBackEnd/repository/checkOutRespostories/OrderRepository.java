@@ -1,4 +1,4 @@
-package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository;
+package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.checkOutRespostories;
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
