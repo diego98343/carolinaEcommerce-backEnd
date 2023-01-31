@@ -1,7 +1,7 @@
 package CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.services.OrderService;
 
 import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.model.checkOut.Order;
-import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.checkOutRespostories.OrderRepository;
+import CarolinaEcommerceBackEnd.CarolinaEcommerceBackEnd.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

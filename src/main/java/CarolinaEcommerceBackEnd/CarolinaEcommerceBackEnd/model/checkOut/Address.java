@@ -17,7 +17,7 @@ public class Address {
     private String zipcode;
     @OneToOne
     @PrimaryKeyJoinColumn
-    @JsonIgnore
+
     private Order order;
 
 

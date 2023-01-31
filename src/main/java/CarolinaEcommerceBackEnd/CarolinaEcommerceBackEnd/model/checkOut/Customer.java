@@ -16,7 +16,7 @@ public class Customer {
     private int  id;
     private String name;
     private String email;
-    @JsonIgnore
+
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Order> orders;
     public void add(Order order){
